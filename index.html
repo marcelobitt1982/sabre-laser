@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabre Laser Paris 11</title>
+    <!-- Police Futuriste / Star Wars -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* RESET ET THÈME DE BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #030308;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            padding: 30px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- ESTRELAS ANIMADAS --- */
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%   { opacity: 0;   transform: translateY(0px); }
+            15%  { opacity: 0.8; }
+            30%  { opacity: 0; }
+            45%  { opacity: 0.6; }
+            60%  { opacity: 0;   transform: translateY(5px); }
+            100% { opacity: 0;   transform: translateY(10px); }
+        }
+
+        /* EN-TÊTE */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 
+        0 0 5px #a8dcac,
+        0 0 10px #5f9e70,
+        0 0 20px #00ff66,
+        0 0 30px #00ff66,
+        0 0 40px #00ff66;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+        p.subtitle {
+            color: #00f3ff;
+            text-shadow: 0 0 8px #00f3ff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* TITRES DE SECTION */
+        .section-title {
+            max-width: 1200px;
+            margin: 40px auto 20px auto;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            border-bottom: 2px solid;
+            padding-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blue-section {
+            color: #00f3ff;
+            text-shadow: 0 0 8px #00f3ff;
+            border-color: #00f3ff;
+        }
+
+        .red-section {
+            color: #ff0055;
+            text-shadow: 0 0 8px #ff0055;
+            border-color: #ff0055;
+        }
+
+        /* GRILLE DE LA GALERIE */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CARTE DE CONTENU */
+        .item-card {
+            background: #090918;
+            border-radius: 8px;
+            overflow: hidden;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .video-card {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .video-card:hover {
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+        }
+
+        .photo-card {
+            border: 2px solid #ff0055;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
+        }
+
+        /* CONTAINER DE VÍDEO RESPONSIVO 16:9 (DIRETO NA PÁGINA) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CONTAINER DE FOTO */
+        .thumb-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .thumb-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 12px 15px;
+            background: #080815;
+            font-size: 0.9rem;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.8rem;
+            border-top: 1px solid #1a1a3a;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .force-quote {
+            color: #ffe81f;
+            text-shadow: 0 0 5px #ffe81f;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stars-container"></div>
+
+    <header>
+        <h1>Sabre Laser Paris 11</h1>
+        <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
+        <p>Entraînement Sabre Laser</p>
+    </header>
+
+    <!-- SECTION VIDÉOS YOUTUBE (LEITOR DIRETO NA PÁGINA) -->
+    <h2 class="section-title blue-section">VIDÉOS</h2>
+    <div class="gallery-grid">
+
+        <!-- VIDÉO 1 -->
+        <div class="item-card video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/itM3eUaFwko" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="card-info">DJ MARCELO - Beautiful Day (U2)</div>
+        </div>
+
+        <!-- VIDÉO 2 -->
+        <div class="item-card video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/kPveVQ6wbcw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="card-info">Entraînement Sabre Laser</div>
+        </div>
+
+    </div>
+
+    <!-- SECTION PHOTOS LOCALE -->
+    <h2 class="section-title red-section">// GALERIE DE PHOTOS</h2>
+    <div class="gallery-grid">
+
+        <!-- PHOTO 1 -->
+        <div class="item-card photo-card">
+            <div class="thumb-wrapper">
+                <img src="images/1.jpg" alt="Photo Paris 11 - 1">
+            </div>
+            <div class="card-info">Session Photo #1</div>
+        </div>
+
+        <!-- PHOTO 2 -->
+        <div class="item-card photo-card">
+            <div class="thumb-wrapper">
+                <img src="images/2.jpg" alt="Photo Paris 11 - 2">
+            </div>
+            <div class="card-info">Session Photo #2</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="force-quote">"Que la Force soit avec vous."</p>
+        <p>Sabre Laser Paris 11 &bull; Tous droits réservés</p>
+    </footer>
+
+    <script>
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            const numStars = 200;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+
+                const size = Math.random() * 3 + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.animationDelay = Math.random() * 5 + 's';
+
+                container.appendChild(star);
+            }
+        }
+
+        window.onload = createStars;
+    </script>
+
+</body>
+</html>
