@@ -1,0 +1,37 @@
+/* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES) --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            header {
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+
+            p.subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+                margin: 25px auto 15px auto;
+                letter-spacing: 1px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .card-info {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+        }
