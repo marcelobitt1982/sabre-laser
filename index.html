@@ -104,29 +104,6 @@
             padding: 20px;
         }
 
-        .header-title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 35px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-
-        .header-logo {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            border-radius: 50%;
-            box-shadow: 0 0 25px #00f3ff, 0 0 45px rgba(0, 243, 255, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .header-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px #00f3ff, 0 0 60px rgba(0, 243, 255, 0.8);
-        }
-
         h1 {
             font-size: 3rem;
             color: #fff;
@@ -138,6 +115,119 @@
                 0 0 40px #00ff66;
             letter-spacing: 4px;
             text-transform: uppercase;
+        }
+
+        /* --- LOGO AO LADO DAS ESPADAS NEON --- */
+        .logo-sabers-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            margin: 25px auto 15px auto;
+            flex-wrap: wrap;
+        }
+
+        /* LOGO SEM CONTORNO E SEM SOMBRA */
+        .header-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: none;
+            box-shadow: none;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .sabers-display {
+            position: relative;
+            width: 350px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .saber-3d {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            height: 20px;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+        }
+
+        /* CABO / EMPUNHADURA METÁLICA 3D */
+        .saber-hilt {
+            width: 75px;
+            height: 12px;
+            background: linear-gradient(90deg, #111 0%, #777 25%, #e6e6e6 50%, #555 75%, #222 100%);
+            border-radius: 3px 0 0 3px;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.8);
+            z-index: 2;
+        }
+
+        .saber-hilt::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 2px;
+            width: 10px;
+            height: 8px;
+            background: #000;
+            border-radius: 1px;
+        }
+
+        .saber-hilt::after {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 1px;
+            width: 6px;
+            height: 10px;
+            background: linear-gradient(180deg, #ffd700, #998100);
+            border-radius: 2px;
+        }
+
+        /* LÂMINA DE ENERGIA COM EFEITO NEON */
+        .saber-blade {
+            height: 8px;
+            width: 220px;
+            border-radius: 0 8px 8px 0;
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* SABRE AZUL NEON */
+        .saber-blue {
+            transform: rotate(-6deg) translateY(-6px);
+        }
+
+        .saber-blue .saber-blade {
+            box-shadow: 
+                0 0 4px #ffffff,
+                0 0 10px #00f3ff,
+                0 0 20px #00f3ff,
+                0 0 35px #00f3ff,
+                0 0 50px #00f3ff;
+        }
+
+        /* SABRE VERDE NEON */
+        .saber-green {
+            transform: rotate(6deg) scaleX(-1) translateY(6px);
+        }
+
+        .saber-green .saber-blade {
+            box-shadow: 
+                0 0 4px #ffffff,
+                0 0 10px #00ff66,
+                0 0 20px #00ff66,
+                0 0 35px #00ff66,
+                0 0 50px #00ff66;
         }
 
         p.subtitle {
@@ -371,10 +461,13 @@
             nav.navbar ul { gap: 15px; }
             nav.navbar a { font-size: 0.85rem; letter-spacing: 1px; }
             header { margin-bottom: 20px; padding: 10px; }
-            .header-title-container { gap: 15px; margin-bottom: 15px; }
             .header-logo { width: 80px; height: 80px; }
             h1 { font-size: 1.4rem; letter-spacing: 1px; }
             p.subtitle { font-size: 0.7rem; letter-spacing: 1px; }
+            .logo-sabers-container { gap: 15px; }
+            .sabers-display { width: 200px; height: 40px; }
+            .saber-hilt { width: 45px; height: 8px; }
+            .saber-blade { width: 120px; height: 5px; }
             .section-title { font-size: 1rem; margin: 25px auto 12px auto; letter-spacing: 1px; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 5px; margin-bottom: 25px; }
             .thumb-wrapper { height: 75px; }
@@ -395,12 +488,25 @@
         </ul>
     </nav>
 
-    <!-- HEADER COM LOGO E TÍTULO -->
+    <!-- HEADER COM TÍTULO E LOGO AO LADO DAS ESPADAS NEON -->
     <header>
-        <div class="header-title-container">
+        <h1>Sabre Laser Paris 11</h1>
+
+        <div class="logo-sabers-container">
             <img src="images/logo.jpeg" alt="Logo Padawan Odyssée" class="header-logo">
-            <h1>Sabre Laser Paris 11</h1>
+
+            <div class="sabers-display">
+                <div class="saber-3d saber-blue">
+                    <div class="saber-hilt"></div>
+                    <div class="saber-blade"></div>
+                </div>
+                <div class="saber-3d saber-green">
+                    <div class="saber-hilt"></div>
+                    <div class="saber-blade"></div>
+                </div>
+            </div>
         </div>
+
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
     </header>
 
@@ -469,21 +575,19 @@
             <div class="card-info">MICKAEL</div>
         </div>
 
-<div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+        <div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MARCELO">
             </div>
             <div class="card-info">MARCELO</div>
         </div>
 
-<div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+        <div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MICKAEL ET MARCELO ">
             </div>
             <div class="card-info">MICKAEL ET MARCELO </div>
         </div>
-
-
     </div>
 
     <!-- SECTION 3: GALERIE DE PHOTOS -->
@@ -566,7 +670,7 @@
             } else if (url.includes('youtu.be/')) {
                 videoId = url.split('youtu.be/')[1].split('?')[0];
             } else {
-                videoId = url; // Caso passe o ID direto
+                videoId = url;
             }
 
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
