@@ -267,58 +267,6 @@
             opacity: 0.8;
         }
 
-        /* BOTÃO PLAY SOBRE A THUMBNAIL DO VÍDEO */
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 45px;
-            height: 45px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #00f3ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px #00f3ff;
-            transition: all 0.3s ease;
-        }
-
-        .green-card .play-button {
-            border-color: #00ff66;
-            box-shadow: 0 0 15px #00ff66;
-        }
-
-        .play-button::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 7px 0 7px 12px;
-            border-color: transparent transparent transparent #00f3ff;
-            margin-left: 3px;
-        }
-
-        .green-card .play-button::after {
-            border-color: transparent transparent transparent #00ff66;
-        }
-
-        .item-card:hover .play-button {
-            background: #00f3ff;
-            box-shadow: 0 0 25px #00f3ff;
-        }
-
-        .green-card:hover .play-button {
-            background: #00ff66;
-            box-shadow: 0 0 25px #00ff66;
-        }
-
-        .item-card:hover .play-button::after {
-            border-color: transparent transparent transparent #000;
-        }
-
         .card-info {
             padding: 12px 15px;
             background: #080815;
@@ -488,16 +436,6 @@
                 height: 75px;
             }
 
-            .play-button {
-                width: 25px;
-                height: 25px;
-            }
-
-            .play-button::after {
-                border-width: 4px 0 4px 7px;
-                margin-left: 2px;
-            }
-
             .card-info {
                 font-size: 0.6rem;
                 padding: 4px 2px;
@@ -527,12 +465,12 @@
     <!-- HEADER COM LOGO, TÍTULO E SABRE -->
     <header>
         <div class="header-title-container">
-            <img src="logo.jpeg" alt="Logo Padawan Odyssée" class="header-logo">
+            <img src="images/logo.jpeg" alt="Logo Padawan Odyssée" class="header-logo">
             <h1>Sabre Laser Paris 11</h1>
         </div>
-        <img src="sabre.jpg" alt="Sabre Laser" class="sabre-img">
+        
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
-        <p>Entraînement Sabre Laser</p>
+        
     </header>
 
     <!-- SECTION 1: COURS (OS 7 VÍDEOS EXISTENTES) -->
@@ -542,7 +480,6 @@
         <div class="item-card video-card" onclick="openVideo('wLPji_-4wac')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/wLPji_-4wac/hqdefault.jpg" alt="1 INTRO COMPLET">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">1 INTRO</div>
         </div>
@@ -550,7 +487,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/GrQIhyDhTDc/hqdefault.jpg" alt="EPISODE 1">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 1</div>
         </div>
@@ -558,7 +494,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/4dGJvif-ac0/hqdefault.jpg" alt="EPISODE 2">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 2</div>
         </div>
@@ -566,7 +501,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/WYeJ4zpMog0/hqdefault.jpg" alt="EPISODE 3">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 3</div>
         </div>
@@ -574,7 +508,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/Yw-Q-kxA48k/hqdefault.jpg" alt="EPISODE 4">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 4</div>
         </div>
@@ -582,7 +515,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/TgdCtO7ndyw/hqdefault.jpg" alt="EPISODE 5">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 5</div>
         </div>
@@ -590,7 +522,6 @@
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/iXxaM2XmX0w/hqdefault.jpg" alt="EPISODE 6">
-                <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 6</div>
         </div>
