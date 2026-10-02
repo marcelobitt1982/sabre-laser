@@ -14,12 +14,17 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #030308;
             color: #ffffff;
             font-family: 'Orbitron', sans-serif;
             min-height: 100vh;
-            padding: 30px 20px;
+            padding-top: 80px;
+            padding-bottom: 30px;
             overflow-x: hidden;
             position: relative;
         }
@@ -52,12 +57,67 @@
             100% { opacity: 0;   transform: translateY(10px); }
         }
 
+        /* --- MENU DE NAVEGAÇÃO --- */
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(9, 9, 24, 0.95);
+            border-bottom: 2px solid #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        nav.navbar ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav.navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav.navbar a:hover {
+            color: #00f3ff;
+            text-shadow: 0 0 10px #00f3ff;
+        }
+
         /* EN-TÊTE */
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin: 20px auto 40px auto;
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00f3ff;
         }
 
         h1 {
@@ -70,8 +130,16 @@
                 0 0 30px #00ff66,
                 0 0 40px #00ff66;
             letter-spacing: 4px;
-            margin-bottom: 10px;
             text-transform: uppercase;
+        }
+
+        .sabre-img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin: 15px auto 10px auto;
+            display: block;
+            filter: drop-shadow(0 0 12px #00ff66);
         }
 
         p.subtitle {
@@ -79,24 +147,32 @@
             text-shadow: 0 0 8px #00f3ff;
             font-size: 1rem;
             letter-spacing: 2px;
+            margin-top: 10px;
         }
 
         /* TITRES DE SECTION */
         .section-title {
             max-width: 1200px;
-            margin: 40px auto 20px auto;
+            margin: 50px auto 20px auto;
             font-size: 1.5rem;
             letter-spacing: 2px;
             border-bottom: 2px solid;
             padding-bottom: 8px;
             position: relative;
             z-index: 1;
+            scroll-margin-top: 100px;
         }
 
         .blue-section {
             color: #00f3ff;
             text-shadow: 0 0 8px #00f3ff;
             border-color: #00f3ff;
+        }
+
+        .green-section {
+            color: #00ff66;
+            text-shadow: 0 0 8px #00ff66;
+            border-color: #00ff66;
         }
 
         .red-section {
@@ -108,12 +184,13 @@
         /* GRILLE DE LA GALERIE */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
             max-width: 1200px;
             margin: 0 auto 50px auto;
             position: relative;
             z-index: 1;
+            padding: 0 20px;
         }
 
         /* CARTE DE CONTENU */
@@ -139,6 +216,15 @@
             box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
         }
 
+        .video-card.green-card {
+            border: 2px solid #00ff66;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+        }
+
+        .video-card.green-card:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.8);
+        }
+
         .photo-card {
             border: 2px solid #ff0055;
             box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
@@ -149,11 +235,23 @@
             box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
         }
 
+        .placeholder-card {
+            border: 2px dashed #00ff66;
+            background: rgba(0, 255, 102, 0.05);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            color: #00ff66;
+        }
+
         /* CONTAINER THUMBNAIL */
         .thumb-wrapper {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 180px;
             overflow: hidden;
             background: #000;
         }
@@ -187,6 +285,11 @@
             transition: all 0.3s ease;
         }
 
+        .green-card .play-button {
+            border-color: #00ff66;
+            box-shadow: 0 0 15px #00ff66;
+        }
+
         .play-button::after {
             content: '';
             display: block;
@@ -198,9 +301,18 @@
             margin-left: 3px;
         }
 
+        .green-card .play-button::after {
+            border-color: transparent transparent transparent #00ff66;
+        }
+
         .item-card:hover .play-button {
             background: #00f3ff;
             box-shadow: 0 0 25px #00f3ff;
+        }
+
+        .green-card:hover .play-button {
+            background: #00ff66;
+            box-shadow: 0 0 25px #00ff66;
         }
 
         .item-card:hover .play-button::after {
@@ -322,20 +434,39 @@
         /* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES) --- */
         @media (max-width: 768px) {
             body {
-                padding: 15px 10px;
+                padding-top: 70px;
+            }
+
+            nav.navbar ul {
+                gap: 15px;
+            }
+
+            nav.navbar a {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
             }
 
             header {
-                margin-bottom: 25px;
+                margin-bottom: 20px;
+            }
+
+            .header-logo {
+                width: 60px;
+                height: 60px;
             }
 
             h1 {
-                font-size: 1.6rem;
-                letter-spacing: 2px;
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+            }
+
+            .sabre-img {
+                max-width: 100%;
+                margin: 10px auto;
             }
 
             p.subtitle {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
                 letter-spacing: 1px;
             }
 
@@ -345,29 +476,37 @@
                 letter-spacing: 1px;
             }
 
-            /* Vídeos e Fotos em 2 colunas lado a lado no celular */
+            /* Vídeos e Fotos em 3 colunas lado a lado no celular */
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+                padding: 0 5px;
                 margin-bottom: 25px;
             }
 
             .thumb-wrapper {
-                height: 110px;
+                height: 75px;
             }
 
             .play-button {
-                width: 35px;
-                height: 35px;
+                width: 25px;
+                height: 25px;
             }
 
             .play-button::after {
-                border-width: 5px 0 5px 9px;
+                border-width: 4px 0 4px 7px;
+                margin-left: 2px;
             }
 
             .card-info {
-                font-size: 0.75rem;
-                padding: 8px 5px;
+                font-size: 0.6rem;
+                padding: 4px 2px;
+            }
+
+            .placeholder-card {
+                min-height: 75px;
+                font-size: 0.65rem;
+                padding: 5px;
             }
         }
     </style>
@@ -376,74 +515,81 @@
 
     <div id="stars-container"></div>
 
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#cours">Cours</a></li>
+            <li><a href="#videos">Vidéos</a></li>
+            <li><a href="#photos">Photos</a></li>
+        </ul>
+    </nav>
+
+    <!-- HEADER COM LOGO, TÍTULO E SABRE -->
     <header>
-        <h1>Sabre Laser Paris 11</h1>
+        <div class="header-title-container">
+            <img src="logo.jpeg" alt="Logo Padawan Odyssée" class="header-logo">
+            <h1>Sabre Laser Paris 11</h1>
+        </div>
+        <img src="sabre.jpg" alt="Sabre Laser" class="sabre-img">
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
         <p>Entraînement Sabre Laser</p>
     </header>
 
-    <!-- SECTION VIDÉOS YOUTUBE -->
-    <h2 class="section-title blue-section">Cours en vidéo</h2>
+    <!-- SECTION 1: COURS (OS 7 VÍDEOS EXISTENTES) -->
+    <h2 class="section-title blue-section" id="cours">Cours en vidéo</h2>
     <div class="gallery-grid">
 
-        <!-- VIDÉO INTRO -->
         <div class="item-card video-card" onclick="openVideo('wLPji_-4wac')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/wLPji_-4wac/hqdefault.jpg" alt="1 INTRO COMPLET">
                 <div class="play-button"></div>
             </div>
-            <div class="card-info">1 INTRO </div>
+            <div class="card-info">1 INTRO</div>
         </div>
 
-        <!-- VIDÉO 2 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/GrQIhyDhTDc/hqdefault.jpg" alt="Entraînement Sabre Laser">
+                <img src="https://img.youtube.com/vi/GrQIhyDhTDc/hqdefault.jpg" alt="EPISODE 1">
                 <div class="play-button"></div>
             </div>
-            <div class="card-info">EPISODE 1 </div>
+            <div class="card-info">EPISODE 1</div>
         </div>
 
-        <!-- VIDÉO 2 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/4dGJvif-ac0/hqdefault.jpg" alt="Entraînement Sabre Laser 2">
+                <img src="https://img.youtube.com/vi/4dGJvif-ac0/hqdefault.jpg" alt="EPISODE 2">
                 <div class="play-button"></div>
             </div>
-            <div class="card-info">EPISODE 2 </div>
+            <div class="card-info">EPISODE 2</div>
         </div>
 
-        <!-- VIDÉO 3 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/WYeJ4zpMog0/hqdefault.jpg" alt="Entraînement Sabre Laser 2">
+                <img src="https://img.youtube.com/vi/WYeJ4zpMog0/hqdefault.jpg" alt="EPISODE 3">
                 <div class="play-button"></div>
             </div>
-            <div class="card-info">EPISODE 3 </div>
+            <div class="card-info">EPISODE 3</div>
         </div>
 
-        <!-- VIDÉO 4 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/Yw-Q-kxA48k/hqdefault.jpg" alt="Entraînement Sabre Laser 2">
+                <img src="https://img.youtube.com/vi/Yw-Q-kxA48k/hqdefault.jpg" alt="EPISODE 4">
                 <div class="play-button"></div>
             </div>
-            <div class="card-info">EPISODE 4 </div>
+            <div class="card-info">EPISODE 4</div>
         </div>
 
-        <!-- VIDÉO 5 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/TgdCtO7ndyw/hqdefault.jpg" alt="Entraînement Sabre Laser 2">
+                <img src="https://img.youtube.com/vi/TgdCtO7ndyw/hqdefault.jpg" alt="EPISODE 5">
                 <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 5</div>
         </div>
 
-        <!-- VIDÉO 5 -->
         <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/iXxaM2XmX0w/hqdefault.jpg" alt="Entraînement Sabre Laser 2">
+                <img src="https://img.youtube.com/vi/iXxaM2XmX0w/hqdefault.jpg" alt="EPISODE 6">
                 <div class="play-button"></div>
             </div>
             <div class="card-info">EPISODE 6</div>
@@ -451,35 +597,44 @@
 
     </div>
 
-    <!-- SECTION PHOTOS LOCALE -->
-<h2 class="section-title red-section">Galerie de Photos</h2>
-<div class="gallery-grid">
-
-    <!-- PHOTO 1 -->
-    <div class="item-card photo-card" onclick="openPhoto('images/1.jpeg', '')">
-        <div class="thumb-wrapper">
-            <img src="images/1.jpeg" alt="SABRE LASER">
+    <!-- SECTION 2: VIDÉOS (NOVA ENTRADA PARA FUTUROS VÍDEOS) -->
+    <h2 class="section-title green-section" id="videos">Vidéos</h2>
+    <div class="gallery-grid">
+        <!-- Espaço pronto para quando você adicionar vídeos futuros -->
+        <div class="item-card placeholder-card">
+            <div>
+                <p><strong>Nouveaux Vidéos</strong></p>
+                <p style="font-size: 0.8rem; margin-top: 5px;">À venir bientôt...</p>
+            </div>
         </div>
-        <div class="card-info"></div>
     </div>
 
-    <!-- PHOTO 2 -->
-    <div class="item-card photo-card" onclick="openPhoto('images/2.jpeg', 'MARCELO')">
-        <div class="thumb-wrapper">
-            <img src="images/2.jpeg" alt="SABRE LASER">
-        </div>
-        <div class="card-info">MARCELO</div>
-    </div>
+    <!-- SECTION 3: GALERIE DE PHOTOS -->
+    <h2 class="section-title red-section" id="photos">Galerie de Photos</h2>
+    <div class="gallery-grid">
 
-    <!-- PHOTO 3 -->
-    <div class="item-card photo-card" onclick="openPhoto('images/3.jpeg', 'SABRE LASER')">
-        <div class="thumb-wrapper">
-            <img src="images/3.jpeg" alt="SABRE LASER">
+        <div class="item-card photo-card" onclick="openPhoto('images/1.jpeg', '')">
+            <div class="thumb-wrapper">
+                <img src="images/1.jpeg" alt="SABRE LASER">
+            </div>
+            <div class="card-info">SABRE LASER</div>
         </div>
-        <div class="card-info"></div>
-    </div>
 
-</div>
+        <div class="item-card photo-card" onclick="openPhoto('images/2.jpeg', 'MARCELO')">
+            <div class="thumb-wrapper">
+                <img src="images/2.jpeg" alt="SABRE LASER">
+            </div>
+            <div class="card-info">MARCELO</div>
+        </div>
+
+        <div class="item-card photo-card" onclick="openPhoto('images/3.jpeg', 'SABRE LASER')">
+            <div class="thumb-wrapper">
+                <img src="images/3.jpeg" alt="SABRE LASER">
+            </div>
+            <div class="card-info">SABRE LASER</div>
+        </div>
+
+    </div>
 
     <!-- POPUP LEITOR DE VÍDEO -->
     <div class="modal" id="videoModal" onclick="closeVideo(event)">
@@ -537,7 +692,7 @@
             const iframe = document.getElementById('youtubePlayer');
 
             modal.classList.remove('active');
-            iframe.src = ''; // Interrompe o áudio/vídeo
+            iframe.src = '';
         }
 
         function closeVideo(event) {
