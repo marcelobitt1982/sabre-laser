@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabre Laser Paris 11</title>
-    <!-- Police Futuriste / Star Wars -->
+    <!-- Fonte Futurista Star Wars -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* RESET ET THÈME DE BASE */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -94,7 +93,7 @@
             text-shadow: 0 0 10px #00f3ff;
         }
 
-        /* EN-TÊTE */
+        /* CABEÇALHO */
         header {
             text-align: center;
             margin: 30px auto 50px auto;
@@ -117,7 +116,7 @@
             text-transform: uppercase;
         }
 
-        /* --- LOGO AO LADO DAS ESPADAS NEON --- */
+        /* LOGO E ESPADAS NEON */
         .logo-sabers-container {
             display: flex;
             align-items: center;
@@ -127,14 +126,11 @@
             flex-wrap: wrap;
         }
 
-        /* LOGO SEM CONTORNO E SEM SOMBRA */
         .header-logo {
             width: 120px;
             height: 120px;
             object-fit: contain;
             border-radius: 50%;
-            border: none;
-            box-shadow: none;
             transition: transform 0.3s ease;
         }
 
@@ -159,7 +155,6 @@
             filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
         }
 
-        /* CABO / EMPUNHADURA METÁLICA 3D */
         .saber-hilt {
             width: 75px;
             height: 12px;
@@ -192,7 +187,6 @@
             border-radius: 2px;
         }
 
-        /* LÂMINA DE ENERGIA COM EFEITO NEON */
         .saber-blade {
             height: 8px;
             width: 220px;
@@ -202,7 +196,6 @@
             z-index: 1;
         }
 
-        /* SABRE AZUL NEON */
         .saber-blue {
             transform: rotate(-6deg) translateY(-6px);
         }
@@ -216,7 +209,6 @@
                 0 0 50px #00f3ff;
         }
 
-        /* SABRE VERDE NEON */
         .saber-green {
             transform: rotate(6deg) scaleX(-1) translateY(6px);
         }
@@ -230,6 +222,102 @@
                 0 0 50px #00ff66;
         }
 
+        /* --- PLAYER DE ÁUDIO E CONTROLES --- */
+        .audio-player-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .holocron-audio-btn {
+            background: rgba(8, 8, 25, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 20px;
+            padding: 8px 20px;
+            color: #00f3ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .holocron-audio-btn:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 22px rgba(0, 243, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* CONTROLE DE VOLUME ESTILIZADO */
+        .volume-control-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(8, 8, 25, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 20px;
+            padding: 6px 15px;
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+        }
+
+        .volume-icon {
+            color: #00f3ff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 90px;
+            height: 6px;
+            background: #090918;
+            border: 1px solid #00f3ff;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #00f3ff;
+            box-shadow: 0 0 8px #00f3ff;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #00f3ff;
+            box-shadow: 0 0 8px #00f3ff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .volume-slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+        }
+
         p.subtitle {
             color: #00f3ff;
             text-shadow: 0 0 8px #00f3ff;
@@ -238,7 +326,7 @@
             margin-top: 15px;
         }
 
-        /* TITRES DE SECTION */
+        /* SEÇÕES */
         .section-title {
             max-width: 1200px;
             margin: 50px auto 20px auto;
@@ -269,7 +357,7 @@
             border-color: #ff0055;
         }
 
-        /* GRILLE DE LA GALERIE */
+        /* GALERIA */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -281,7 +369,6 @@
             padding: 0 20px;
         }
 
-        /* CARTE DE CONTENU */
         .item-card {
             background: #090918;
             border-radius: 8px;
@@ -323,7 +410,6 @@
             box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
         }
 
-        /* CONTAINER THUMBNAIL */
         .thumb-wrapper {
             position: relative;
             width: 100%;
@@ -353,7 +439,7 @@
             text-overflow: ellipsis;
         }
 
-        /* --- MODAIS FLUTUANTES (POPUP LIGHTBOX) --- */
+        /* MODAIS */
         .modal {
             position: fixed;
             top: 0;
@@ -376,7 +462,6 @@
             pointer-events: auto;
         }
 
-        /* MODAL VÍDEO */
         .video-modal-content {
             position: relative;
             width: 100%;
@@ -395,7 +480,6 @@
             border-radius: 6px;
         }
 
-        /* MODAL FOTO */
         .photo-modal-content {
             position: relative;
             max-width: 90%;
@@ -455,7 +539,6 @@
             font-size: 0.9rem;
         }
 
-        /* --- AJUSTES MÓVEIS --- */
         @media (max-width: 768px) {
             body { padding-top: 70px; }
             nav.navbar ul { gap: 15px; }
@@ -472,6 +555,9 @@
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 5px; margin-bottom: 25px; }
             .thumb-wrapper { height: 75px; }
             .card-info { font-size: 0.6rem; padding: 4px 2px; }
+            .holocron-audio-btn { font-size: 0.7rem; padding: 6px 14px; }
+            .volume-control-box { padding: 4px 10px; }
+            .volume-slider { width: 60px; }
         }
     </style>
 </head>
@@ -479,7 +565,6 @@
 
     <div id="stars-container"></div>
 
-    <!-- MENU DE NAVEGAÇÃO -->
     <nav class="navbar">
         <ul>
             <li><a href="#cours">Cours</a></li>
@@ -488,7 +573,6 @@
         </ul>
     </nav>
 
-    <!-- HEADER COM TÍTULO E LOGO AO LADO DAS ESPADAS NEON -->
     <header>
         <h1>Sabre Laser Paris 11</h1>
 
@@ -507,62 +591,67 @@
             </div>
         </div>
 
+        <!-- PLAYER DE ÁUDIO COM BOTAO PLAY/PAUSE E CONTROLE DE VOLUME -->
+        <div class="audio-player-container">
+            <button id="audioToggle" class="holocron-audio-btn" aria-label="Play / Pause Audio">
+                <span class="audio-icon-status" id="audioIcon">▶</span>
+                <span id="audioText">PLAY - LA FORCE</span>
+            </button>
+
+            <div class="volume-control-box">
+                <span class="volume-icon" id="volumeIcon">🔊</span>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.25" aria-label="Contrôle du volume">
+            </div>
+        </div>
+
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
     </header>
 
     <!-- SECTION 1: COURS EN VIDÉO -->
     <h2 class="section-title blue-section" id="cours">Cours en vidéo</h2>
     <div class="gallery-grid">
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=wLPji_-4wac')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/wLPji_-4wac/hqdefault.jpg" alt="1 INTRO COMPLET">
             </div>
             <div class="card-info">1 INTRO</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=GrQIhyDhTDc')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/GrQIhyDhTDc/hqdefault.jpg" alt="EPISODE 1">
             </div>
             <div class="card-info">EPISODE 1</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/4dGJvif-ac0/hqdefault.jpg" alt="EPISODE 2">
             </div>
             <div class="card-info">EPISODE 2</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=WYeJ4zpMog0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/WYeJ4zpMog0/hqdefault.jpg" alt="EPISODE 3">
             </div>
             <div class="card-info">EPISODE 3</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=Yw-Q-kxA48k')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/Yw-Q-kxA48k/hqdefault.jpg" alt="EPISODE 4">
             </div>
             <div class="card-info">EPISODE 4</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=TgdCtO7ndyw')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/TgdCtO7ndyw/hqdefault.jpg" alt="EPISODE 5">
             </div>
             <div class="card-info">EPISODE 5</div>
         </div>
-
         <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=iXxaM2XmX0w')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/iXxaM2XmX0w/hqdefault.jpg" alt="EPISODE 6">
             </div>
             <div class="card-info">EPISODE 6</div>
         </div>
-
     </div>
 
     <!-- SECTION 2: VIDÉOS -->
@@ -574,14 +663,12 @@
             </div>
             <div class="card-info">MICKAEL</div>
         </div>
-
         <div class="item-card video-card green-card" onclick="openVideo('https://www.youtube.com/watch?v=Rswb5T0nJQI')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/Rswb5T0nJQI/hqdefault.jpg" alt="MARCELO">
             </div>
             <div class="card-info">MARCELO</div>
         </div>
-
         <div class="item-card video-card green-card" onclick="openVideo('https://www.youtube.com/watch?v=mKuRd7MqUjU')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/mKuRd7MqUjU/hqdefault.jpg" alt="MICKAEL ET MARCELO ">
@@ -593,31 +680,27 @@
     <!-- SECTION 3: GALERIE DE PHOTOS -->
     <h2 class="section-title red-section" id="photos">Galerie de Photos</h2>
     <div class="gallery-grid">
-
         <div class="item-card photo-card" onclick="openPhoto('images/1.jpeg', 'SABRE LASER')">
             <div class="thumb-wrapper">
                 <img src="images/1.jpeg" alt="SABRE LASER">
             </div>
             <div class="card-info">SABRE LASER</div>
         </div>
-
         <div class="item-card photo-card" onclick="openPhoto('images/2.jpeg', 'MARCELO')">
             <div class="thumb-wrapper">
                 <img src="images/2.jpeg" alt="MARCELO">
             </div>
             <div class="card-info">MARCELO</div>
         </div>
-
         <div class="item-card photo-card" onclick="openPhoto('images/3.jpeg', 'SABRE LASER')">
             <div class="thumb-wrapper">
                 <img src="images/3.jpeg" alt="SABRE LASER">
             </div>
             <div class="card-info">SABRE LASER</div>
         </div>
-
     </div>
 
-    <!-- POPUP LEITOR DE VÍDEO -->
+    <!-- POPUP VÍDEO -->
     <div class="modal" id="videoModal" onclick="closeVideo(event)">
         <div class="video-modal-content">
             <span class="close-btn" onclick="forceCloseVideo()">&times;</span>
@@ -625,7 +708,7 @@
         </div>
     </div>
 
-    <!-- POPUP VISUALIZADOR DE FOTO -->
+    <!-- POPUP FOTO -->
     <div class="modal" id="photoModal" onclick="closePhoto(event)">
         <div class="photo-modal-content">
             <span class="close-btn" onclick="forceClosePhoto()">&times;</span>
@@ -640,6 +723,240 @@
     </footer>
 
     <script>
+        // SINTETIZADOR DE MÚSICA SINTÉTICA ESTILO STAR WARS
+        class StarWarsSynthesizer {
+            constructor() {
+                this.ctx = null;
+                this.isPlaying = false;
+                this.bpm = 108;
+                this.step = 0;
+                this.timer = null;
+                this.masterGain = null;
+                this.volume = 0.25;
+
+                const G3 = 196.00, Eb3 = 155.56, Bb3 = 233.08, D4 = 293.66;
+                const Eb4 = 311.13, Gb3 = 185.00, G4 = 392.00, D3 = 146.83;
+
+                this.melody = [
+                    G3,  G3,  G3,  Eb3,
+                    Bb3, G3,  Eb3, Bb3,
+                    G3,  D4,  D4,  D4,
+                    Eb4, Bb3, Gb3, Eb3
+                ];
+
+                this.bassline = [
+                    G3/2, 0,    G3/2, 0,
+                    Eb3/2,0,    Bb3/2,0,
+                    G3/2, 0,    D3,   0,
+                    Eb3/2,0,    Gb3/2,0
+                ];
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioCtx();
+                    this.masterGain = this.ctx.createGain();
+                    this.masterGain.gain.value = this.volume;
+                    this.masterGain.connect(this.ctx.destination);
+                }
+            }
+
+            setVolume(v) {
+                this.volume = parseFloat(v);
+                if (this.masterGain && this.ctx) {
+                    this.masterGain.gain.setTargetAtTime(this.volume, this.ctx.currentTime, 0.05);
+                }
+            }
+
+            start() {
+                this.init();
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+                if (this.isPlaying) return;
+                this.isPlaying = true;
+                this.step = 0;
+
+                const stepDuration = (60 / this.bpm) / 4;
+                this.timer = setInterval(() => {
+                    this.playStep();
+                    this.step = (this.step + 1) % 16;
+                }, stepDuration * 1000);
+            }
+
+            stop() {
+                if (!this.isPlaying) return;
+                this.isPlaying = false;
+                clearInterval(this.timer);
+            }
+
+            toggle() {
+                if (this.isPlaying) {
+                    this.stop();
+                } else {
+                    this.start();
+                }
+                return this.isPlaying;
+            }
+
+            playStep() {
+                const time = this.ctx.currentTime;
+
+                if (this.step % 2 === 0 || this.step === 3 || this.step === 7) {
+                    this.playSnare(time);
+                }
+
+                const noteFreq = this.melody[this.step];
+                if (noteFreq > 0) {
+                    this.playBrassNote(time, noteFreq);
+                }
+
+                const bassFreq = this.bassline[this.step];
+                if (bassFreq > 0) {
+                    this.playBassNote(time, bassFreq);
+                }
+            }
+
+            playBrassNote(time, freq) {
+                const osc1 = this.ctx.createOscillator();
+                const osc2 = this.ctx.createOscillator();
+                const filter = this.ctx.createBiquadFilter();
+                const gain = this.ctx.createGain();
+
+                osc1.type = 'sawtooth';
+                osc2.type = 'square';
+
+                osc1.frequency.setValueAtTime(freq, time);
+                osc2.frequency.setValueAtTime(freq * 1.002, time);
+
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(800, time);
+                filter.frequency.exponentialRampToValueAtTime(2800, time + 0.08);
+                filter.frequency.exponentialRampToValueAtTime(1000, time + 0.25);
+                filter.Q.value = 3;
+
+                gain.gain.setValueAtTime(0.3, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.28);
+
+                osc1.connect(filter);
+                osc2.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+
+                osc1.start(time);
+                osc2.start(time);
+                osc1.stop(time + 0.28);
+                osc2.stop(time + 0.28);
+            }
+
+            playBassNote(time, freq) {
+                const osc = this.ctx.createOscillator();
+                const filter = this.ctx.createBiquadFilter();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, time);
+
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(400, time);
+
+                gain.gain.setValueAtTime(0.5, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.3);
+
+                osc.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+
+                osc.start(time);
+                osc.stop(time + 0.3);
+            }
+
+            playSnare(time) {
+                const bufferSize = this.ctx.sampleRate * 0.05;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const output = buffer.getChannelData(0);
+
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 3000;
+
+                const gain = this.ctx.createGain();
+                gain.gain.setValueAtTime(0.12, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+
+                noise.start(time);
+                noise.stop(time + 0.05);
+            }
+        }
+
+        const synth = new StarWarsSynthesizer();
+
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        const audioText = document.getElementById('audioText');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        // ATUALIZAÇÃO DA INTERFACE DO BOTÃO
+        function updateAudioUI(isPlaying) {
+            if (isPlaying) {
+                audioIcon.innerText = '🔊';
+                audioText.innerText = 'PAUSE - LA FORCE';
+            } else {
+                audioIcon.innerText = '▶';
+                audioText.innerText = 'PLAY - LA FORCE';
+            }
+        }
+
+        // CONTROLE DE VOLUME
+        volumeSlider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            synth.setVolume(val);
+
+            if (val == 0) {
+                volumeIcon.innerText = '🔇';
+            } else if (val < 0.5) {
+                volumeIcon.innerText = '🔉';
+            } else {
+                volumeIcon.innerText = '🔊';
+            }
+        });
+
+        // DESBLOQUEIO DE ÁUDIO NO PRIMEIRA INTERAÇÃO
+        function handleFirstUserInteraction() {
+            if (!synth.isPlaying) {
+                synth.start();
+                updateAudioUI(true);
+            }
+            document.removeEventListener('click', handleFirstUserInteraction);
+            document.removeEventListener('touchstart', handleFirstUserInteraction);
+            document.removeEventListener('scroll', handleFirstUserInteraction);
+        }
+
+        document.addEventListener('click', handleFirstUserInteraction);
+        document.addEventListener('touchstart', handleFirstUserInteraction);
+        document.addEventListener('scroll', handleFirstUserInteraction);
+
+        // CLIQUE NO BOTÃO DE ÁUDIO
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const active = synth.toggle();
+            updateAudioUI(active);
+        });
+
+        // CRIAÇÃO DAS ESTRELAS
         function createStars() {
             const container = document.getElementById('stars-container');
             const numStars = 200;
@@ -659,8 +976,13 @@
             }
         }
 
-        // FUNÇÃO QUE EXTRAI O ID DO LINK E ABRE O POPUP
+        // CONTROLE DOS POPUPS DE VÍDEO
         function openVideo(url) {
+            if (synth.isPlaying) {
+                synth.stop();
+                updateAudioUI(false);
+            }
+
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('youtubePlayer');
 
@@ -691,7 +1013,7 @@
             }
         }
 
-        // VISUALIZADOR DE FOTOS
+        // CONTROLE DOS POPUPS DE FOTO
         function openPhoto(src, title) {
             const modal = document.getElementById('photoModal');
             const img = document.getElementById('modalImage');
@@ -715,6 +1037,5 @@
 
         window.onload = createStars;
     </script>
-
 </body>
 </html>
