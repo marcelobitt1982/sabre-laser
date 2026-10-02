@@ -230,6 +230,42 @@
                 0 0 50px #00ff66;
         }
 
+        /* --- BOTÃO DE ÁUDIO FUTURISTA JUNTO ÀS ESPADAS --- */
+        .audio-player-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .holocron-audio-btn {
+            background: rgba(8, 8, 25, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 20px;
+            padding: 8px 18px;
+            color: #00f3ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .holocron-audio-btn:hover {
+            background: rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 22px rgba(0, 243, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .audio-icon-status {
+            font-size: 1rem;
+        }
+
         p.subtitle {
             color: #00f3ff;
             text-shadow: 0 0 8px #00f3ff;
@@ -472,12 +508,19 @@
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 5px; margin-bottom: 25px; }
             .thumb-wrapper { height: 75px; }
             .card-info { font-size: 0.6rem; padding: 4px 2px; }
+            .holocron-audio-btn { font-size: 0.7rem; padding: 6px 14px; }
         }
     </style>
 </head>
 <body>
 
     <div id="stars-container"></div>
+
+    <!-- PLAYER DE ÁUDIO COM MÚSICA EPICA STAR WARS AMBIENT -->
+    <audio id="bgAudio" loop autoplay preload="auto">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/2/23/Holst-_jupiter.ogg" type="audio/ogg">
+        <source src="https://ia801309.us.archive.org/19/items/ThePlanetsByGustavHolst/04.Jupiter%2CTheBringerOfJollity.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- MENU DE NAVEGAÇÃO -->
     <nav class="navbar">
@@ -488,7 +531,7 @@
         </ul>
     </nav>
 
-    <!-- HEADER COM TÍTULO E LOGO AO LADO DAS ESPADAS NEON -->
+    <!-- HEADER COM TÍTULO, LOGO E BOTÃO AO LADO DAS ESPADAS -->
     <header>
         <h1>Sabre Laser Paris 11</h1>
 
@@ -505,6 +548,14 @@
                     <div class="saber-blade"></div>
                 </div>
             </div>
+        </div>
+
+        <!-- BOTÃO DE PLAY / PAUSA JUNTO ÀS ESPADAS -->
+        <div class="audio-player-container">
+            <button id="audioToggle" class="holocron-audio-btn" aria-label="Play / Pause Audio">
+                <span class="audio-icon-status" id="audioIcon">🔊</span>
+                <span id="audioText">PAUSE AUDIO</span>
+            </button>
         </div>
 
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
@@ -575,16 +626,16 @@
             <div class="card-info">MICKAEL</div>
         </div>
 
-        <div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+        <div class="item-card video-card green-card" onclick="openVideo('https://www.youtube.com/watch?v=Rswb5T0nJQI')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MARCELO">
+                <img src="https://img.youtube.com/vi/Rswb5T0nJQI/hqdefault.jpg" alt="MARCELO">
             </div>
             <div class="card-info">MARCELO</div>
         </div>
 
-        <div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+        <div class="item-card video-card green-card" onclick="openVideo('https://www.youtube.com/watch?v=mKuRd7MqUjU')">
             <div class="thumb-wrapper">
-                <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MICKAEL ET MARCELO ">
+                <img src="https://img.youtube.com/vi/mKuRd7MqUjU/hqdefault.jpg" alt="MICKAEL ET MARCELO ">
             </div>
             <div class="card-info">MICKAEL ET MARCELO </div>
         </div>
@@ -659,8 +710,70 @@
             }
         }
 
+        // --- CONTROLE DE MÚSICA DE FUNDO ---
+        const bgAudio = document.getElementById('bgAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        const audioText = document.getElementById('audioText');
+
+        // Volume baixo suave
+        bgAudio.volume = 0.12;
+
+        function updateButtonUI() {
+            if (bgAudio.paused) {
+                audioIcon.innerText = '▶';
+                audioText.innerText = 'PLAY AUDIO';
+            } else {
+                audioIcon.innerText = '🔊';
+                audioText.innerText = 'PAUSE AUDIO';
+            }
+        }
+
+        // Tenta reprodução automática assim que abre a página
+        window.addEventListener('DOMContentLoaded', () => {
+            const playPromise = bgAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateButtonUI();
+                }).catch(() => {
+                    // Navegadores mobile costumam bloquear áudio sem toque prévio do usuário
+                    updateButtonUI();
+                });
+            }
+        });
+
+        // Toca no primeiro toque em dispositivos móveis caso o navegador bloqueie o autoplay
+        function startAudioOnFirstInteraction() {
+            if (bgAudio.paused) {
+                bgAudio.play().then(() => {
+                    updateButtonUI();
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', startAudioOnFirstInteraction);
+            document.removeEventListener('touchstart', startAudioOnFirstInteraction);
+        }
+
+        document.addEventListener('click', startAudioOnFirstInteraction);
+        document.addEventListener('touchstart', startAudioOnFirstInteraction);
+
+        // Ação ao clicar no botão
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (bgAudio.paused) {
+                bgAudio.play();
+            } else {
+                bgAudio.pause();
+            }
+            updateButtonUI();
+        });
+
         // FUNÇÃO QUE EXTRAI O ID DO LINK E ABRE O POPUP
         function openVideo(url) {
+            if (!bgAudio.paused) {
+                bgAudio.pause();
+                updateButtonUI();
+            }
+
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('youtubePlayer');
 
