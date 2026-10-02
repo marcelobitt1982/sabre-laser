@@ -140,15 +140,6 @@
             text-transform: uppercase;
         }
 
-        .sabre-img {
-            width: 100%;
-            max-width: 700px;
-            height: auto;
-            margin: 15px auto 10px auto;
-            display: block;
-            filter: drop-shadow(0 0 12px #00ff66);
-        }
-
         p.subtitle {
             color: #00f3ff;
             text-shadow: 0 0 8px #00f3ff;
@@ -240,18 +231,6 @@
         .photo-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
-        }
-
-        .placeholder-card {
-            border: 2px dashed #00ff66;
-            background: rgba(0, 255, 102, 0.05);
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 15px;
-            color: #00ff66;
         }
 
         /* CONTAINER THUMBNAIL */
@@ -386,80 +365,20 @@
             font-size: 0.9rem;
         }
 
-        /* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES) --- */
+        /* --- AJUSTES MÓVEIS --- */
         @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
-
-            nav.navbar ul {
-                gap: 15px;
-            }
-
-            nav.navbar a {
-                font-size: 0.85rem;
-                letter-spacing: 1px;
-            }
-
-            header {
-                margin-bottom: 20px;
-                padding: 10px;
-            }
-
-            .header-title-container {
-                gap: 15px;
-                margin-bottom: 15px;
-            }
-
-            .header-logo {
-                width: 80px;
-                height: 80px;
-                box-shadow: 0 0 15px #00f3ff, 0 0 30px rgba(0, 243, 255, 0.6);
-            }
-
-            h1 {
-                font-size: 1.4rem;
-                letter-spacing: 1px;
-            }
-
-            .sabre-img {
-                max-width: 100%;
-                margin: 10px auto;
-            }
-
-            p.subtitle {
-                font-size: 0.7rem;
-                letter-spacing: 1px;
-            }
-
-            .section-title {
-                font-size: 1rem;
-                margin: 25px auto 12px auto;
-                letter-spacing: 1px;
-            }
-
-            /* Vídeos e Fotos em 3 colunas lado a lado no celular */
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-                padding: 0 5px;
-                margin-bottom: 25px;
-            }
-
-            .thumb-wrapper {
-                height: 75px;
-            }
-
-            .card-info {
-                font-size: 0.6rem;
-                padding: 4px 2px;
-            }
-
-            .placeholder-card {
-                min-height: 75px;
-                font-size: 0.65rem;
-                padding: 5px;
-            }
+            body { padding-top: 70px; }
+            nav.navbar ul { gap: 15px; }
+            nav.navbar a { font-size: 0.85rem; letter-spacing: 1px; }
+            header { margin-bottom: 20px; padding: 10px; }
+            .header-title-container { gap: 15px; margin-bottom: 15px; }
+            .header-logo { width: 80px; height: 80px; }
+            h1 { font-size: 1.4rem; letter-spacing: 1px; }
+            p.subtitle { font-size: 0.7rem; letter-spacing: 1px; }
+            .section-title { font-size: 1rem; margin: 25px auto 12px auto; letter-spacing: 1px; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 5px; margin-bottom: 25px; }
+            .thumb-wrapper { height: 75px; }
+            .card-info { font-size: 0.6rem; padding: 4px 2px; }
         }
     </style>
 </head>
@@ -476,64 +395,62 @@
         </ul>
     </nav>
 
-    <!-- HEADER COM LOGO, TÍTULO E SABRE -->
+    <!-- HEADER COM LOGO E TÍTULO -->
     <header>
         <div class="header-title-container">
             <img src="images/logo.jpeg" alt="Logo Padawan Odyssée" class="header-logo">
             <h1>Sabre Laser Paris 11</h1>
         </div>
-        
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
-        
     </header>
 
-    <!-- SECTION 1: COURS (OS 7 VÍDEOS EXISTENTES) -->
+    <!-- SECTION 1: COURS EN VIDÉO -->
     <h2 class="section-title blue-section" id="cours">Cours en vidéo</h2>
     <div class="gallery-grid">
 
-        <div class="item-card video-card" onclick="openVideo('wLPji_-4wac')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=wLPji_-4wac')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/wLPji_-4wac/hqdefault.jpg" alt="1 INTRO COMPLET">
             </div>
             <div class="card-info">1 INTRO</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=GrQIhyDhTDc')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/GrQIhyDhTDc/hqdefault.jpg" alt="EPISODE 1">
             </div>
             <div class="card-info">EPISODE 1</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=4dGJvif-ac0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/4dGJvif-ac0/hqdefault.jpg" alt="EPISODE 2">
             </div>
             <div class="card-info">EPISODE 2</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=WYeJ4zpMog0')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/WYeJ4zpMog0/hqdefault.jpg" alt="EPISODE 3">
             </div>
             <div class="card-info">EPISODE 3</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=Yw-Q-kxA48k')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/Yw-Q-kxA48k/hqdefault.jpg" alt="EPISODE 4">
             </div>
             <div class="card-info">EPISODE 4</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=TgdCtO7ndyw')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/TgdCtO7ndyw/hqdefault.jpg" alt="EPISODE 5">
             </div>
             <div class="card-info">EPISODE 5</div>
         </div>
 
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card" onclick="openVideo('https://www.youtube.com/watch?v=iXxaM2XmX0w')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/iXxaM2XmX0w/hqdefault.jpg" alt="EPISODE 6">
             </div>
@@ -542,22 +459,38 @@
 
     </div>
 
-    <!-- SECTION 2: VIDÉOS (NOVA ENTRADA PARA FUTUROS VÍDEOS) -->
+    <!-- SECTION 2: VIDÉOS -->
     <h2 class="section-title green-section" id="videos">Vidéos</h2>
     <div class="gallery-grid">
-        <div class="item-card video-card" onclick="openVideo('4dGJvif-ac0')">
+        <div class="item-card video-card green-card" onclick="openVideo('https://www.youtube.com/watch?v=hFs_idJ7I5g')">
             <div class="thumb-wrapper">
                 <img src="https://img.youtube.com/vi/hFs_idJ7I5g/hqdefault.jpg" alt="MICKAEL">
             </div>
             <div class="card-info">MICKAEL</div>
         </div>
+
+<div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+            <div class="thumb-wrapper">
+                <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MARCELO">
+            </div>
+            <div class="card-info">MARCELO</div>
+        </div>
+
+<div class="item-card video-card green-card" onclick="openVideo('XXXXXXXXXXXXX')">
+            <div class="thumb-wrapper">
+                <img src="https://img.youtube.com/vi/XXXXXXXXXXX/hqdefault.jpg" alt="MICKAEL ET MARCELO ">
+            </div>
+            <div class="card-info">MICKAEL ET MARCELO </div>
+        </div>
+
+
     </div>
 
     <!-- SECTION 3: GALERIE DE PHOTOS -->
     <h2 class="section-title red-section" id="photos">Galerie de Photos</h2>
     <div class="gallery-grid">
 
-        <div class="item-card photo-card" onclick="openPhoto('images/1.jpeg', '')">
+        <div class="item-card photo-card" onclick="openPhoto('images/1.jpeg', 'SABRE LASER')">
             <div class="thumb-wrapper">
                 <img src="images/1.jpeg" alt="SABRE LASER">
             </div>
@@ -566,7 +499,7 @@
 
         <div class="item-card photo-card" onclick="openPhoto('images/2.jpeg', 'MARCELO')">
             <div class="thumb-wrapper">
-                <img src="images/2.jpeg" alt="SABRE LASER">
+                <img src="images/2.jpeg" alt="MARCELO">
             </div>
             <div class="card-info">MARCELO</div>
         </div>
@@ -622,10 +555,19 @@
             }
         }
 
-        // LEITOR DE VÍDEO
-        function openVideo(videoId) {
+        // FUNÇÃO QUE EXTRAI O ID DO LINK E ABRE O POPUP
+        function openVideo(url) {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('youtubePlayer');
+
+            let videoId = '';
+            if (url.includes('v=')) {
+                videoId = url.split('v=')[1].split('&')[0];
+            } else if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            } else {
+                videoId = url; // Caso passe o ID direto
+            }
 
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             modal.classList.add('active');
