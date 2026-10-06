@@ -222,7 +222,7 @@
                 0 0 50px #00ff66;
         }
 
-        /* BOTÃO DE MÚSICA EMBEBITO NO CABEÇALHO */
+        /* BOTÃO DE MÚSICA */
         .audio-control-btn {
             background: rgba(9, 9, 24, 0.9);
             color: #00f3ff;
@@ -539,9 +539,15 @@
 
     <div id="stars-container"></div>
 
-    <!-- AUDIO DE FUNDO LOCAL -->
+    <!-- ÁUDIO DE FUNDO LOCAL -->
     <audio id="bgMusic" loop preload="auto">
         <source src="audio/starwars-theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- EFEITO SONORO DE SABRE LASER (Tenta o local primeiro, com fallback online) -->
+    <audio id="saberSound" preload="auto">
+        <source src="audio/saber-swing.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2870/2870-preview.mp3" type="audio/mpeg">
     </audio>
 
     <nav class="navbar">
@@ -569,7 +575,7 @@
                 </div>
             </div>
 
-            <!-- BOTÃO DA MÚSICA EMBEBITO LOGO ABAIXO DAS ESPADAS -->
+            <!-- BOTÃO DA MÚSICA DE FUNDO -->
             <button class="audio-control-btn" id="audioToggleBtn" onclick="toggleAudio()">
                 <span id="audioIcon">🎵</span> <span id="audioText">Activer la Musique</span>
             </button>
@@ -778,6 +784,22 @@
             }
         }
 
+        /* FUNÇÃO DE ÁUDIO OTIMIZADA PARA PERMITIR CLIQUES RÁPIDOS */
+        function playSaberSound() {
+            const saberSound = document.getElementById('saberSound');
+            if (saberSound) {
+                saberSound.pause();
+                saberSound.currentTime = 0; // Reinicia o áudio no instante 0
+                
+                const playPromise = saberSound.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(err => {
+                        console.warn("Reprodução do efeito sonoro impedida:", err);
+                    });
+                }
+            }
+        }
+
         function toggleAudio() {
             const bgMusic = document.getElementById('bgMusic');
             const audioText = document.getElementById('audioText');
@@ -861,6 +883,10 @@
 
         function navigatePhoto(direction, event) {
             if (event) event.stopPropagation();
+            
+            // Toca o som de sabre laser
+            playSaberSound();
+
             currentPhotoIndex += direction;
 
             if (currentPhotoIndex < 0) {
