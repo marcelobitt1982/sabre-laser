@@ -222,6 +222,33 @@
                 0 0 50px #00ff66;
         }
 
+        /* BOTÃO DE MÚSICA EMBEBITO NO CABEÇALHO */
+        .audio-control-btn {
+            background: rgba(9, 9, 24, 0.9);
+            color: #00f3ff;
+            border: 2px solid #00f3ff;
+            border-radius: 30px;
+            padding: 10px 22px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 15px auto 5px auto;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .audio-control-btn:hover {
+            background: #00f3ff;
+            color: #030308;
+            box-shadow: 0 0 25px #00f3ff;
+            transform: scale(1.05);
+        }
+
         p.subtitle {
             color: #00f3ff;
             text-shadow: 0 0 8px #00f3ff;
@@ -501,12 +528,21 @@
                 height: 36px;
                 font-size: 1.2rem;
             }
+            .audio-control-btn {
+                font-size: 0.75rem;
+                padding: 8px 14px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div id="stars-container"></div>
+
+    <!-- AUDIO DE FUNDO LOCAL -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="audio/starwars-theme.mp3" type="audio/mpeg">
+    </audio>
 
     <nav class="navbar">
         <ul>
@@ -532,6 +568,11 @@
                     <div class="saber-blade"></div>
                 </div>
             </div>
+
+            <!-- BOTÃO DA MÚSICA EMBEBITO LOGO ABAIXO DAS ESPADAS -->
+            <button class="audio-control-btn" id="audioToggleBtn" onclick="toggleAudio()">
+                <span id="audioIcon">🎵</span> <span id="audioText">Activer la Musique</span>
+            </button>
         </div>
 
         <p class="subtitle">GALERIE DE HOLOPROJECTIONS ET ARCHIVES DE LA FORCE</p>
@@ -703,7 +744,6 @@
     </footer>
 
     <script>
-        // LISTA DE FOTOS PARA NAVEGAÇÃO
         const photosList = [
             { src: 'images/1.jpeg', title: 'SABRE LASER' },
             { src: 'images/2.jpeg', title: 'MARCELO' },
@@ -717,8 +757,8 @@
         ];
 
         let currentPhotoIndex = 0;
+        let isMusicWasPlaying = false;
 
-        // CRIAÇÃO DAS ESTRELAS
         function createStars() {
             const container = document.getElementById('stars-container');
             const numStars = 200;
@@ -738,10 +778,37 @@
             }
         }
 
-        // CONTROLE DOS POPUPS DE VÍDEO
+        function toggleAudio() {
+            const bgMusic = document.getElementById('bgMusic');
+            const audioText = document.getElementById('audioText');
+            const audioIcon = document.getElementById('audioIcon');
+
+            if (bgMusic.paused) {
+                bgMusic.volume = 0.3;
+                bgMusic.play().then(() => {
+                    audioText.innerText = 'Couper la Musique';
+                    audioIcon.innerText = '🔊';
+                }).catch(err => {
+                    console.log("Erro ao tentar tocar o áudio: ", err);
+                });
+            } else {
+                bgMusic.pause();
+                audioText.innerText = 'Activer la Musique';
+                audioIcon.innerText = '🎵';
+            }
+        }
+
         function openVideo(url) {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('youtubePlayer');
+            const bgMusic = document.getElementById('bgMusic');
+
+            if (!bgMusic.paused) {
+                isMusicWasPlaying = true;
+                bgMusic.pause();
+            } else {
+                isMusicWasPlaying = false;
+            }
 
             let videoId = '';
             if (url.includes('v=')) {
@@ -759,9 +826,14 @@
         function forceCloseVideo() {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('youtubePlayer');
+            const bgMusic = document.getElementById('bgMusic');
 
             modal.classList.remove('active');
             iframe.src = '';
+
+            if (isMusicWasPlaying) {
+                bgMusic.play();
+            }
         }
 
         function closeVideo(event) {
@@ -770,7 +842,6 @@
             }
         }
 
-        // CONTROLE DOS POPUPS DE FOTO E NAVEGAÇÃO
         function openPhoto(index) {
             currentPhotoIndex = index;
             updatePhotoModal();
@@ -812,7 +883,6 @@
             }
         }
 
-        // TECLAS DE ATALHO (ESQUERDA, DIREITA, ESC)
         document.addEventListener('keydown', function(event) {
             const photoModal = document.getElementById('photoModal');
             if (photoModal.classList.contains('active')) {
@@ -826,7 +896,6 @@
             }
         });
 
-        // NAVEGAÇÃO POR SWIPE (DESLIZAR O DEDO NO CELULAR)
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -842,12 +911,12 @@
         }, { passive: true });
 
         function handleSwipe() {
-            const threshold = 40; // distância mínima em pixels
+            const threshold = 40;
             if (touchEndX < touchStartX - threshold) {
-                navigatePhoto(1); // Deslizou para a esquerda -> próxima foto
+                navigatePhoto(1);
             }
             if (touchEndX > touchStartX + threshold) {
-                navigatePhoto(-1); // Deslizou para a direita -> foto anterior
+                navigatePhoto(-1);
             }
         }
 
